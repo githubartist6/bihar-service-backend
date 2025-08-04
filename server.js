@@ -5,6 +5,7 @@ const app = express();
 const connectDb = require("./utls/db");
 const errorMiddleware = require("./middlewares/error-middleware");
 const PORT = 5000;
+const CLIENT_URL = process.env.CLIENT_URL;
 
 connectDb().then(() => {
     app.listen(PORT, () => {
@@ -23,7 +24,7 @@ const travelRoutes = require("./router/travel-route");
 
 // let's tackle cors
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: CLIENT_URL,
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
 };
